@@ -18,7 +18,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group 'org.example'
 version '1.0-SNAPSHOT'
-sourceCompatibility = 1.8
+
 
 repositories {
     mavenCentral()
@@ -26,12 +26,14 @@ repositories {
 }
 
 dependencies {
-//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    compileOnly('org.springframework.boot:spring-boot-starter-web')
-    testCompileOnly('org.springframework.boot:spring-boot-starter-test')
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.7.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.7.RELEASE'
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    // gradle 5.x 버전 이상이면 아래와 같이 롬복 컴파일과 함께 어노테이션프로세서 추가해야함
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
 }
-
-//test {
-//    useJUnitPlatform()
-//}
